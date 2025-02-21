@@ -5,14 +5,14 @@ export default function InputNum({
   children,
 }) {
   return (
-    <label>
-      {children}
+    <div>
+      <label>{children}</label>
       <input
         min={minValue}
         max={maxValue}
         onChange={handleChange}
         type="number"
       />
-    </label>
+    </div>
   );
 }

@@ -1,6 +1,9 @@
-import Select from "./Select";
+import "./AddCarForm.css";
+
 import { carBrands } from "../data/carData";
 import { useState } from "react";
+
+import Select from "./Select";
 import InputNum from "./InputNum";
 import InputDate from "./InputDate";
 
@@ -38,7 +41,7 @@ export default function AddCarForm() {
   console.log(carInfo);
 
   return (
-    <form>
+    <form className="car-entry">
       <Select
         options={carBrands}
         carInfo={carInfo.name}

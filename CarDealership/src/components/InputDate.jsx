@@ -1,8 +1,8 @@
 export default function InputDate({ handleChange, children }) {
   return (
-    <label>
-      {children}
+    <div>
+      <label>{children}</label>
       <input onChange={handleChange} type="date" />
-    </label>
+    </div>
   );
 }
