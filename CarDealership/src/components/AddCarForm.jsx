@@ -1,12 +1,19 @@
 import Select from "./Select";
 import { carBrands } from "../data/carData";
 import { useState } from "react";
+import InputNum from "./InputNum";
+import InputDate from "./InputDate";
 
-function AddCarForm() {
-  const [carInfo, setCarInfo] = useState({ name: "", model: "" });
+export default function AddCarForm() {
+  const [carInfo, setCarInfo] = useState({
+    name: "",
+    model: "",
+    productionYear: "",
+    registrationExpirationDate: "",
+  });
 
   function handleCarBrandSelect(event) {
-    setCarInfo({ name: event.target.value, model: "" });
+    setCarInfo((prev) => ({ ...prev, name: event.target.value, model: "" }));
   }
 
   function handleModelSelect(event) {
@@ -17,6 +24,17 @@ function AddCarForm() {
     setCarInfo((prev) => ({ ...prev, model: carModelAndType }));
   }
 
+  function handleInputNumChange(event) {
+    setCarInfo((prev) => ({ ...prev, productionYear: event.target.value }));
+  }
+
+  function handleInputDateChange(event) {
+    setCarInfo((prev) => ({
+      ...prev,
+      registrationExpirationDate: event.target.value,
+    }));
+  }
+
   console.log(carInfo);
 
   return (
@@ -24,23 +42,33 @@ function AddCarForm() {
       <Select
         options={carBrands}
         carInfo={carInfo.name}
-        handleClick={handleCarBrandSelect}
+        handleChange={handleCarBrandSelect}
       >
-        Izaberi brend automobila:{" "}
+        Brend automobila:{" "}
       </Select>
 
       {carInfo.name && (
         <Select
           options={carBrands.find((cb) => cb.name === carInfo.name).models}
           carInfo={carInfo.model}
-          handleClick={handleModelSelect}
+          handleChange={handleModelSelect}
         >
-          Izaberi model automobila:{" "}
+          Model automobila:{" "}
         </Select>
       )}
+
+      <InputNum
+        minValue="1886"
+        maxValue={new Date().getFullYear()}
+        handleChange={handleInputNumChange}
+      >
+        Godina proizvodnje:{" "}
+      </InputNum>
+
+      <InputDate handleChange={handleInputDateChange}>
+        Datum isteka registracije:{" "}
+      </InputDate>
       <button>Dodaj automobil</button>
     </form>
   );
 }
-
-export default AddCarForm;

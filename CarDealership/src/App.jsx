@@ -1,12 +1,10 @@
 import "./App.css";
 import AddCarForm from "./components/AddCarForm";
 
-function App() {
+export default function App() {
   return (
     <>
       <AddCarForm />
     </>
   );
 }
-
-export default App;

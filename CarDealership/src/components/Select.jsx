@@ -1,8 +1,13 @@
-function Select({ options, selectValue, handleClick, children }) {
+export default function Select({
+  options,
+  selectValue,
+  handleChange,
+  children,
+}) {
   return (
     <div>
       <label>{children}</label>
-      <select value={selectValue} onChange={handleClick}>
+      <select value={selectValue} onChange={handleChange}>
         <option value="">Odaberite opciju</option>
         {options.map((o) => (
           <option key={o.name} value={o.name}>
@@ -13,5 +18,3 @@ function Select({ options, selectValue, handleClick, children }) {
     </div>
   );
 }
-
-export default Select;
