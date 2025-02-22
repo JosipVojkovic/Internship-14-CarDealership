@@ -12,7 +12,7 @@ export const carBrands = [
     models: [
       { name: "A4", type: "Limuzina" },
       { name: "Q7", type: "SUV" },
-      { name: "R8", type: "Sportski automobil" },
+      { name: "R8", type: "Sportski" },
     ],
   },
   {
@@ -34,16 +34,16 @@ export const carBrands = [
   {
     name: "Bugatti",
     models: [
-      { name: "Veyron", type: "Sportski automobil" },
-      { name: "Chiron", type: "Sportski automobil" },
-      { name: "Divo", type: "Sportski automobil" },
+      { name: "Veyron", type: "Sportski" },
+      { name: "Chiron", type: "Sportski" },
+      { name: "Divo", type: "Sportski" },
     ],
   },
   {
     name: "Chevrolet",
     models: [
       { name: "Camaro", type: "Kupe" },
-      { name: "Corvette", type: "Sportski automobil" },
+      { name: "Corvette", type: "Sportski" },
       { name: "Silverado", type: "Pickup" },
     ],
   },
@@ -66,9 +66,9 @@ export const carBrands = [
   {
     name: "Ferrari",
     models: [
-      { name: "488 GTB", type: "Sportski automobil" },
-      { name: "F8 Tributo", type: "Sportski automobil" },
-      { name: "LaFerrari", type: "Sportski automobil" },
+      { name: "488 GTB", type: "Sportski" },
+      { name: "F8 Tributo", type: "Sportski" },
+      { name: "LaFerrari", type: "Sportski" },
     ],
   },
   {
@@ -122,8 +122,8 @@ export const carBrands = [
   {
     name: "Lamborghini",
     models: [
-      { name: "Huracán", type: "Sportski automobil" },
-      { name: "Aventador", type: "Sportski automobil" },
+      { name: "Huracán", type: "Sportski" },
+      { name: "Aventador", type: "Sportski" },
       { name: "Urus", type: "SUV" },
     ],
   },

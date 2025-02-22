@@ -6,7 +6,7 @@ import { useState } from "react";
 import Select from "./Select";
 import Input from "./Input";
 
-export default function AddCarForm() {
+export default function AddCarForm({ setCars }) {
   const [carInfo, setCarInfo] = useState({
     name: "",
     model: "",
@@ -46,9 +46,22 @@ export default function AddCarForm() {
     }
 
     setInvalidInput(false);
-  }
+    setCars((prev) => {
+      const lastId = prev[prev.length - 1].id;
 
-  console.log(carInfo);
+      return [
+        ...prev,
+        {
+          id: lastId + 1,
+          brand: carInfo.name,
+          model: carInfo.model.name,
+          type: carInfo.model.type,
+          productionYear: carInfo.productionYear,
+          registrationExpirationDate: carInfo.registrationExpirationDate,
+        },
+      ];
+    });
+  }
 
   return (
     <form className="car-entry">
