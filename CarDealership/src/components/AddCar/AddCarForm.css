@@ -1,0 +1,72 @@
+.car-entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 50px;
+  color: white;
+}
+
+.car-entry::before {
+  content: "";
+  position: absolute;
+  background: url("../../assets/Cars.jpg") no-repeat center;
+  background-size: cover;
+  inset: 0;
+  z-index: -1;
+}
+
+.car-entry > h1 {
+  font-size: 50px;
+  margin: 0 0 30px 0;
+  padding: 0;
+  color: rgb(0, 167, 222);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+}
+
+.car-entry .invalid-input {
+  color: red;
+}
+
+.car-entry > button {
+  margin-top: 20px;
+  border: 3px solid rgb(0, 167, 222);
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+  transition: ease 0.2s;
+}
+
+.car-entry > button:hover {
+  background-color: rgb(0, 167, 222);
+}
+
+.car-entry > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.car-entry > div > label {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.car-entry > div > select,
+.car-entry > div > input {
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.car-entry > div > select > option {
+  font-size: 16px;
+}

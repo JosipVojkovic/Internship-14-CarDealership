@@ -1,4 +1,5 @@
 export default function InputNum({
+  type,
   maxValue,
   minValue,
   handleChange,
@@ -11,7 +12,7 @@ export default function InputNum({
         min={minValue}
         max={maxValue}
         onChange={handleChange}
-        type="number"
+        type={type}
       />
     </div>
   );

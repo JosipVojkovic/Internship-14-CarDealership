@@ -1,11 +1,10 @@
 import "./AddCarForm.css";
 
-import { carBrands } from "../data/carData";
+import { carBrands } from "../../data/carData";
 import { useState } from "react";
 
 import Select from "./Select";
-import InputNum from "./InputNum";
-import InputDate from "./InputDate";
+import Input from "./Input";
 
 export default function AddCarForm() {
   const [carInfo, setCarInfo] = useState({
@@ -14,6 +13,8 @@ export default function AddCarForm() {
     productionYear: "",
     registrationExpirationDate: "",
   });
+
+  const [invalidInput, setInvalidInput] = useState(false);
 
   function handleCarBrandSelect(event) {
     setCarInfo((prev) => ({ ...prev, name: event.target.value, model: "" }));
@@ -38,10 +39,20 @@ export default function AddCarForm() {
     }));
   }
 
+  function addCarAction() {
+    if (Object.values(carInfo).some((value) => !value)) {
+      setInvalidInput(true);
+      return;
+    }
+
+    setInvalidInput(false);
+  }
+
   console.log(carInfo);
 
   return (
     <form className="car-entry">
+      <h1>Autosalon</h1>
       <Select
         options={carBrands}
         carInfo={carInfo.name}
@@ -50,7 +61,7 @@ export default function AddCarForm() {
         Brend automobila:{" "}
       </Select>
 
-      {carInfo.name && (
+      {carInfo.name ? (
         <Select
           options={carBrands.find((cb) => cb.name === carInfo.name).models}
           carInfo={carInfo.model}
@@ -58,20 +69,44 @@ export default function AddCarForm() {
         >
           Model automobila:{" "}
         </Select>
+      ) : (
+        <div>
+          <label>Model automobila: </label>
+          <select disabled>
+            <option>Odaberite opciju</option>
+          </select>
+        </div>
       )}
 
-      <InputNum
+      <Input
+        type="number"
         minValue="1886"
         maxValue={new Date().getFullYear()}
         handleChange={handleInputNumChange}
       >
         Godina proizvodnje:{" "}
-      </InputNum>
+      </Input>
 
-      <InputDate handleChange={handleInputDateChange}>
+      <Input
+        type="date"
+        minValue={new Date(Date.now() + 86400000).toISOString().split("T")[0]}
+        maxValue={
+          new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+            .toISOString()
+            .split("T")[0]
+        }
+        handleChange={handleInputDateChange}
+      >
         Datum isteka registracije:{" "}
-      </InputDate>
-      <button>Dodaj automobil</button>
+      </Input>
+      {invalidInput && (
+        <p className="invalid-input">
+          Molimo vas da ispunite sva polja prije nego što nastavite.
+        </p>
+      )}
+      <button onClick={addCarAction} type="button">
+        Dodaj automobil
+      </button>
     </form>
   );
 }
