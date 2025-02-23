@@ -8,8 +8,8 @@ export default function App() {
 
   return (
     <>
-      <AddCarForm setCars={setCars} />
-      <ShowCars cars={cars} />
+      <AddCarForm cars={cars} setCars={setCars} />
+      <ShowCars cars={cars} setCars={setCars} />
     </>
   );
 }

@@ -8,6 +8,7 @@
 }
 
 .cars-container > div {
+  position: relative;
   display: flex;
   flex-direction: column;
   background-color: rgb(0, 167, 222);
@@ -16,6 +17,10 @@
   border-radius: 20px;
   border: 2px solid white;
   box-shadow: 0px 0px 3px black;
+}
+
+.cars-container .red-border {
+  border-color: red;
 }
 
 .cars-container > div > h3,
@@ -30,4 +35,18 @@
   font-style: italic;
   color: white;
   border-bottom: 1px solid white;
+}
+
+.cars-container .trash-icon {
+  position: absolute;
+  top: 7px;
+  right: 7px;
+  width: 30px;
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+}
+
+.cars-container .trash-icon:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
