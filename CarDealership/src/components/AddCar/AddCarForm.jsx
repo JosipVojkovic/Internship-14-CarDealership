@@ -47,12 +47,12 @@ export default function AddCarForm({ cars, setCars }) {
 
     setInvalidInput(false);
     setCars((prev) => {
-      const lastId = prev[prev.length - 1].id;
+      const newId = prev.length ? prev[prev.length - 1].id + 1 : 1;
 
       return [
         ...prev,
         {
-          id: lastId + 1,
+          id: newId,
           brand: carInfo.name,
           model: carInfo.model.name,
           type: carInfo.model.type,
@@ -70,6 +70,8 @@ export default function AddCarForm({ cars, setCars }) {
     });
   }
 
+  console.log(cars);
+
   return (
     <form className="car-entry">
       <h1>Autosalon</h1>
@@ -85,7 +87,7 @@ export default function AddCarForm({ cars, setCars }) {
       {carInfo.name ? (
         <Select
           options={carBrands.find((cb) => cb.name === carInfo.name).models}
-          selectValue={carInfo.model}
+          selectValue={carInfo.model.name}
           handleChange={handleModelSelect}
           isDisabled={cars - length > 10}
         >

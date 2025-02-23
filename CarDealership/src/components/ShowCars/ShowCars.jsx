@@ -47,11 +47,19 @@ export default function ShowCars({ cars, setCars }) {
         </div>
       </div>
       <div className="cars-container">
-        {sortedCars.map((car) => (
-          <CarCard key={car.id} carData={car} setCars={setCars}>
-            {car.brand}
-          </CarCard>
-        ))}
+        {sortedCars.length ? (
+          sortedCars.map((car) => (
+            <CarCard key={car.id} carData={car} setCars={setCars}>
+              {car.brand}
+            </CarCard>
+          ))
+        ) : (
+          <p className="no-cars-msg">
+            {cars.length
+              ? "Nema automobila koji odgovaraju pretrazi."
+              : "Još uvijek nemamo automobila u ponudi. Molimo provjerite kasnije."}
+          </p>
+        )}
       </div>
     </section>
   );

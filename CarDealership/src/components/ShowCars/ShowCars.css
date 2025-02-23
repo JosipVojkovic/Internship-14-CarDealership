@@ -99,3 +99,7 @@
 .cars-container .trash-icon:hover {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
+.cars-container .no-cars-msg {
+  font-size: 18px;
+}
