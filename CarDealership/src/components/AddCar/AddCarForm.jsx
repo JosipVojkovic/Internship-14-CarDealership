@@ -1,18 +1,20 @@
 import "./AddCarForm.css";
 
 import { carBrands } from "../../data/carData";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Select from "./Select";
 import Input from "./Input";
 
 export default function AddCarForm({ cars, setCars }) {
-  const [carInfo, setCarInfo] = useState({
-    name: "",
-    model: "",
-    productionYear: "",
-    registrationExpirationDate: "",
-  });
+  const [carInfo, setCarInfo] = useState(
+    JSON.parse(localStorage.getItem("carInfo")) || {
+      name: "",
+      model: "",
+      productionYear: "",
+      registrationExpirationDate: "",
+    }
+  );
 
   const [invalidInput, setInvalidInput] = useState(false);
 
@@ -38,6 +40,10 @@ export default function AddCarForm({ cars, setCars }) {
       registrationExpirationDate: event.target.value,
     }));
   }
+
+  useEffect(() => {
+    localStorage.setItem("carInfo", JSON.stringify(carInfo));
+  }, [carInfo]);
 
   function addCarAction() {
     if (Object.values(carInfo).some((value) => !value)) {
@@ -69,8 +75,6 @@ export default function AddCarForm({ cars, setCars }) {
       registrationExpirationDate: "",
     });
   }
-
-  console.log(cars);
 
   return (
     <form className="car-entry">

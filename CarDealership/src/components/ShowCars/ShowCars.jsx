@@ -2,11 +2,15 @@ import "./ShowCars.css";
 
 import CarCard from "./CarCard";
 import Search from "./Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ShowCars({ cars, setCars }) {
-  const [brandSearch, setBrandSearch] = useState("");
-  const [modelSearch, setModelSearch] = useState("");
+  const [brandSearch, setBrandSearch] = useState(
+    JSON.parse(localStorage.getItem("brandSearch")) || ""
+  );
+  const [modelSearch, setModelSearch] = useState(
+    JSON.parse(localStorage.getItem("modelSearch")) || ""
+  );
 
   const filteredCars = cars.filter(
     (c) =>
@@ -32,6 +36,14 @@ export default function ShowCars({ cars, setCars }) {
   function handleModelChange(event) {
     setModelSearch(event.target.value);
   }
+
+  useEffect(() => {
+    localStorage.setItem("brandSearch", JSON.stringify(brandSearch));
+  }, [brandSearch]);
+
+  useEffect(() => {
+    localStorage.setItem("modelSearch", JSON.stringify(modelSearch));
+  }, [modelSearch]);
 
   return (
     <section className="show-cars-section">
